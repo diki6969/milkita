@@ -8,7 +8,7 @@ var handler = async (m, { text, conn }) => {
     str += "Title: " + fak[i].title + '\n';
     str += "Link: " + fak[i].link + '\n\n';
   }
-  conn.sendFile(m.chat, fak.img, 'anu.jpg', str, m);
+  conn.reply(m.chat, str, m)
 } catch (e) {
   m.reply("Maaf Tidak Ditemukan")
 };
