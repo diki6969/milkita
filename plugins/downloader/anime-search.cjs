@@ -3,17 +3,14 @@ var handler = async (m, { text, conn }) => {
   try {
   let wtf = await fetch(API('xzn','api/oploverz', {search: text }, 'apikey'));
   let fak = await wtf.json();
-  let str = `_${fak.title}_\n\nStatus: ${fak.status}\nStudio: ${fak.studio}\n\n`;
-  str += "*List Episode:*\n\n";
-  let a = fak.list_episode;
-  for (let i = 0; i < a.length; i++) {
-    str += "Episode: " + a[i].episode + '\n';
-    str += "Title: " + a[i].title + '\n';
-    str += "Link: " + a[i].url + '\n\n';
+  let str = `Oploverz Search`;
+  for (let i = 0; i < fak.length; i++) {
+    str += "Title: " + fak[i].title + '\n';
+    str += "Link: " + fak[i].link + '\n\n';
   }
-  conn.sendFile(m.chat, fak.poster, 'anu.jpg', str, m);
+  conn.sendFile(m.chat, fak.img, 'anu.jpg', str, m);
 } catch (e) {
-  m.reply("mana gada hoax hoax")
+  m.reply("Maaf Tidak Ditemukan")
 };
 };
 handler.help = handler.command = ['search'];
